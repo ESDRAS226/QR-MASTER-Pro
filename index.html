@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#4361ee">
+    <meta name="description" content="Générateur de QR Code professionnel avec options avancées, styles modernes et partage facile">
+    <meta name="keywords" content="QR code, générateur, professionnel, personnalisable">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style">
+    <title>QR MASTER Pro - Générateur de QR Code Professionnel</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <meta name="color-scheme" content="light dark">
+    <!-- Ajouter les messages de traduction -->
+    <script>
+        window.messages = {
+            fr: {
+                enterSocialProfile: 'Veuillez entrer au moins un profil social',
+                enterContent: 'Veuillez entrer un contenu',
+                invalidInput: 'Entrée invalide',
+                error: 'Une erreur est survenue'
+            },
+            en: {
+                enterSocialProfile: 'Please enter at least one social profile',
+                enterContent: 'Please enter some content',
+                invalidInput: 'Invalid input',
+                error: 'An error occurred'
+            }
+        };
+    </script>
+</head>
+<body>
+    <div class="container fade-in">
+        <div class="qr-settings">
+            <div class="site-header">
+                <h1>
+                    <span class="logo-text">
+                        <span class="qr">QR</span>
+                        <span class="master">MASTER</span>
+                        <span class="pro">Pro</span>
+                    </span>
+                </h1>
+                <p class="subtitle">Générateur de QR Code Professionnel</p>
+            </div>
+            <div class="qr-form">
+                <!-- Options basiques -->
+                <div class="option-group fade-in">
+                    <h3><i class="fas fa-pen"></i> Contenu Principal</h3>
+                    <input type="text" id="qr-input" placeholder="Entrez votre texte, URL ou numéro de téléphone">
+                </div>
+
+                <!-- Options de style -->
+                <div class="option-group">
+                    <h3><i class="fas fa-paint-brush"></i> Apparence</h3>
+                    <div class="options">
+                        <div class="color-option">
+                            <label>Couleur QR:</label>
+                            <input type="color" id="qr-color" value="#000000">
+                        </div>
+                        <div class="color-option">
+                            <label>Couleur fond:</label>
+                            <input type="color" id="bg-color" value="#ffffff">
+                        </div>
+                        <div class="size-option">
+                            <label>Taille:</label>
+                            <input type="number" id="qr-size" value="200" min="100" max="400">
+                        </div>
+                        <div class="logo-option">
+                            <label>Logo (URL):</label>
+                            <input type="text" id="qr-logo" placeholder="URL du logo">
+                            <input type="file" id="qr-logo-upload" accept="image/*">
+                        </div>
+                        <div class="style-option">
+                            <label>Style:</label>
+                            <select id="qr-style">
+                                <option value="square">Carré</option>
+                                <option value="rounded">Arrondi</option>
+                            </select>
+                        </div>
+                        <div class="corner-option">
+                            <label>Coins:</label>
+                            <select id="qr-corner">
+                                <option value="square">Carré</option>
+                                <option value="rounded">Arrondi</option>
+                            </select>
+                        </div>
+                        <div class="border-option">
+                            <label>Bordure:</label>
+                            <input type="number" id="qr-border" value="0" min="0" max="10">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Options avancées -->
+                <div class="option-group">
+                    <h3><i class="fas fa-cog"></i> Options avancées</h3>
+                    <div class="options">
+                        <div class="image-option">
+                            <label>Image à transformer en QR:</label>
+                            <input type="file" id="qr-image-upload" accept="image/*">
+                        </div>
+                        <div class="expiration-option">
+                            <label>Date d'expiration:</label>
+                            <input type="date" id="qr-expiration">
+                        </div>
+                        <div class="redirection-option">
+                            <label>Redirection Matin:</label>
+                            <input type="text" id="qr-morning" placeholder="URL pour le matin">
+                        </div>
+                        <div class="redirection-option">
+                            <label>Redirection Après-midi:</label>
+                            <input type="text" id="qr-afternoon" placeholder="URL pour l'après-midi">
+                        </div>
+                        <div class="redirection-option">
+                            <label>Redirection Soir:</label>
+                            <input type="text" id="qr-evening" placeholder="URL pour le soir">
+                        </div>
+                        <div class="social-option">
+                            <label>LinkedIn:</label>
+                            <input type="text" id="qr-linkedin" placeholder="URL LinkedIn">
+                        </div>
+                        <div class="social-option">
+                            <label>Twitter:</label>
+                            <input type="text" id="qr-twitter" placeholder="URL Twitter">
+                        </div>
+                        <div class="social-option">
+                            <label>Facebook:</label>
+                            <input type="text" id="qr-facebook" placeholder="URL Facebook">
+                        </div>
+                        <div class="social-option">
+                            <label>Instagram:</label>
+                            <input type="text" id="qr-instagram" placeholder="URL Instagram">
+                        </div>
+                        <div class="social-option">
+                            <label>WhatsApp:</label>
+                            <input type="text" id="qr-whatsapp" placeholder="Numéro WhatsApp">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Boutons de génération -->
+                <div class="button-group">
+                    <button class="primary-button" onclick="generateQR('basic')">
+                        <i class="fas fa-magic"></i> Générer QR Code
+                    </button>
+                    <button onclick="generateQR('phone')">Téléphone</button>
+                    <button onclick="generateQR('dynamic')">Dynamique</button>
+                    <button onclick="generateQR('contextual')">Contextuel</button>
+                    <button onclick="generateQR('social')">Social</button>
+                    <button onclick="generateQR('image')">Image</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="qr-preview fade-in">
+            <div class="qr-output">
+                <h3><i class="fas fa-eye"></i> Aperçu en Direct</h3>
+                <div id="qr-code"></div>
+                <div class="button-group">
+                    <button id="download-btn" onclick="downloadQR()">
+                        <i class="fas fa-download"></i> Télécharger
+                    </button>
+                    <button id="share-btn" onclick="showShareOptions()">
+                        <i class="fas fa-share-alt"></i> Partager
+                    </button>
+                </div>
+                <div id="share-options" class="share-options" style="display: none;">
+                    <button class="share-icon share-facebook" onclick="shareOn('facebook')" title="Partager sur Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </button>
+                    <button class="share-icon share-twitter" onclick="shareOn('twitter')" title="Partager sur Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </button>
+                    <button class="share-icon share-linkedin" onclick="shareOn('linkedin')" title="Partager sur LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </button>
+                    <button class="share-icon share-whatsapp" onclick="shareOn('whatsapp')" title="Partager sur WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </button>
+                    <button class="share-icon share-email" onclick="shareOn('email')" title="Partager par Email">
+                        <i class="fas fa-envelope"></i>
+                    </button>
+                    <button class="share-icon share-pinterest" onclick="shareOn('pinterest')" title="Partager sur Pinterest">
+                        <i class="fab fa-pinterest-p"></i>
+                    </button>
+                    <button class="share-icon share-reddit" onclick="shareOn('reddit')" title="Partager sur Reddit">
+                        <i class="fab fa-reddit-alien"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
